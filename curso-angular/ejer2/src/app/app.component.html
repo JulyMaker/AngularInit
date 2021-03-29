@@ -1,0 +1,34 @@
+<h1>A checklist</h1>
+<style>
+.completed{
+  text-decoration : line-through;
+}
+</style>
+
+<div *ngFor="let item of items">
+  <input type="checkbox" [(ngModel)]="item.checked">
+  <span
+    [style.textDecoration]="item.checked?'line-through':'none'">
+    {{item.description}}
+  </span>
+  <button (click)="removeItem(item)">Delete</button>
+</div>
+
+<ul>
+  <li *ngFor="let item of items2">
+    <input type="checkbox" [(ngModel)]="item.completed">
+    <span [class.completed]="item.completed">
+      {{item.description}}
+    </span>
+    <button (click)="removeItem2(item)">Delete</button>
+  </li>
+</ul>
+
+
+
+<hr>
+<input #desc type='text'>
+<button (click)="addItem(desc.value); desc.value=''">Add</button>
+<br>
+<input type="text" [(ngModel)]='fieldText'>
+<button (click)="addItem2()">Add 2</button>
